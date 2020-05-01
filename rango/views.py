@@ -5,8 +5,8 @@ def about(request):
     return HttpResponse("Rango says here is the about page. <a href='/rango/'>Index</a>")
 
 def index(request):
-    return HttpResponse("Rango says hey there partner! <a href='/rango/about/'>About</a>")
+    #dict established to allow passing of template engine
+    context_dict = {'boldmessage': 'Crunchy, creamy, cookie, candy, cupcake!'}
 
-
-
-# Create your views here.
+    #returning a rendered response
+    return render(request, 'rango/index.html', context=context_dict)
