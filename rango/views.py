@@ -28,23 +28,21 @@ def visitor_cookie_handler(request):
 
 
 def about(request):
-    if request.session.test_cookie_worked():
-        print("TEST COOKIE WORKED!")
-        request.session.delete_test_cookie()
-
-    return render(request, 'rango/about.html')
+    context_dict = {} 
+    visitor_cookie_handler(request)
+    context_dict['visits'] = request.session['visits']
+    return render(request, 'rango/about.html', context=context_dict)
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
-
+    
     context_dict = {}
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['categories'] = category_list
     context_dict['pages'] = page_list
     
     visitor_cookie_handler(request)
-    context_dict['visits'] = request.session['visits']
 
     response = render(request, 'rango/index.html', context=context_dict)
 
