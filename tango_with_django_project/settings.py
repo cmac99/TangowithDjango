@@ -31,7 +31,7 @@ SECRET_KEY = '670%cn(hy*vomm1-%zka&qxqm5@95-^fjj3xnxtr#p*!qy8^zp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['colinmacrury.pythonanywhere.com/']
 
 
 # Application definition
